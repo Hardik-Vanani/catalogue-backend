@@ -27,4 +27,8 @@ module.exports = {
         APIS: require("./inquiry/inquiry.controller"),
         VALIDATOR: require("./inquiry/inquiry.validator"),
     },
+    PAYMENT: {
+        APIS: require("./payment/payment.controller"),
+        VALIDATOR: require("./payment/payment.validator"),
+    },
 };

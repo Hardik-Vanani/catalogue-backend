@@ -6,4 +6,5 @@ module.exports = {
     product: require("./product.model"),
     inquiry: require("./inquiry.model"),
     siteSetting: require("./vendorSiteSetting.model"),
+    payment: require("./payment.model"),
 };

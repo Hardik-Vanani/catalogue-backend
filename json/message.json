@@ -17,6 +17,6 @@
         "BAD_REQUEST": "Bad request",
         "UNAUTHORIZED": "Unauthorized",
         "INTERNAL_SERVER_ERROR": "Internal Server Error",
-        "EXISTED": "User already exists"
+        "EXISTED": "Already exists"
     }
 }
