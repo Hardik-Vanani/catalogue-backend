@@ -4,6 +4,7 @@ const response = require("../../helper/response.helper");
 module.exports = {
     createRole: async (req, res) => {
         try {
+            // Create Role from the Admin side
             const createRole = await DB.role.create({ name: req.body.name });
             return response.CREATED({ res, payload: { createRole } });
         } catch (error) {

@@ -12,5 +12,6 @@ router.post("/", auth, VALIDATOR.createPaymentDetail, APIS.createPaymentDetail);
 
 router.put("/:id", auth, VALIDATOR.updatePaymentDetail, APIS.updatePaymentDetail);
 
-router.delete("/:id", auth,VALIDATOR.deletePaymentDetail, APIS.deletePaymentDetail);
+router.delete("/:id", auth, VALIDATOR.deletePaymentDetail, APIS.deletePaymentDetail);
+
 module.exports = router;

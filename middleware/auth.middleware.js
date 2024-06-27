@@ -3,12 +3,14 @@ const jwt = require("jsonwebtoken");
 
 const auth = (req, res, next) => {
     try {
+        // Get the token from the headers
         const token = req.headers.authtoken;
         if (!token) {
             req.user = { role: "Customer" };
             return next();
         }
 
+        // Verify the token
         jwt.verify(token, process.env.SECRET_KEY, (err, decoded) => {
             if (err) {
                 if (err.name === "TokenExpiredError") {

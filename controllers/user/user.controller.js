@@ -9,6 +9,7 @@ const roleController = require("../role/role.controller");
 module.exports = {
     createUser: async (req, res) => {
         try {
+            // Create Vendor User first time
             const { username, password, address, mobileNo } = req.body;
 
             const existingUser = await DB.user.findOne({ username });
@@ -19,8 +20,21 @@ module.exports = {
             const role = await DB.role.findOne({ name: "Vendor" });
             if (!role) return response.NOT_FOUND({ res });
 
-            const newUser = await DB.user.create({ username: generateProperName(username), password: hashedPassword, role: role.name });
-            await DB.vendor.create({ name: generateProperName(username), address, mobileNo, subDomain: generateProperName(username), userId: newUser.id });
+            // User create
+            const newUser = await DB.user.create({
+                username: generateProperName(username),
+                password: hashedPassword,
+                role: role.name,
+            });
+
+            // Vendor create
+            await DB.vendor.create({
+                name: generateProperName(username),
+                address,
+                mobileNo,
+                subDomain: generateProperName(username),
+                userId: newUser.id,
+            });
 
             const userData = {
                 userId: newUser.id,
@@ -40,6 +54,7 @@ module.exports = {
 
     loginUser: async (req, res) => {
         try {
+            // Login existing User
             const { username, password } = req.body;
 
             const user = await DB.user.findOne({ username });
